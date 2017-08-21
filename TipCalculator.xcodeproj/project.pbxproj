@@ -25,6 +25,7 @@
 		1959216E1F3139110039DC72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		195921701F3139110039DC72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		195921771F313A4D0039DC72 /* MyriadPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Light.otf"; sourceTree = "<group>"; };
+		198DEC761F4B8A6700A68D35 /* itip-app.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "itip-app.gif"; sourceTree = "<group>"; };
 		19AF17531F4A22B30025DDA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +62,7 @@
 				195921641F3139110039DC72 /* AppDelegate.swift */,
 				195921661F3139110039DC72 /* ViewController.swift */,
 				19AF17531F4A22B30025DDA5 /* SettingsViewController.swift */,
+				198DEC751F4B8A5A00A68D35 /* gif */,
 				195921761F313A020039DC72 /* Fonts */,
 				195921681F3139110039DC72 /* Main.storyboard */,
 				1959216B1F3139110039DC72 /* Assets.xcassets */,
@@ -76,6 +78,14 @@
 				195921771F313A4D0039DC72 /* MyriadPro-Light.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		198DEC751F4B8A5A00A68D35 /* gif */ = {
+			isa = PBXGroup;
+			children = (
+				198DEC761F4B8A6700A68D35 /* itip-app.gif */,
+			);
+			path = gif;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
