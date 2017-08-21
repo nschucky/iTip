@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum DefaultKeys: String {
+    case defaultTipIndex
+    case lastCalculatorValue
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var displayTextField: UITextField!
@@ -18,27 +23,55 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     
     var isTyping = false
+    let defaults = UserDefaults.standard
+    let numberFormatter = NumberFormatter()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
+        segmentedControl.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "MyriadPro-Light", size: 25)!], for: .normal)
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidBecomeActive, object: nil, queue: OperationQueue.main, using: applicationDidBecomeActive)
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillResignActive, object: nil, queue: OperationQueue.main, using: applicationWillResign)
+        
+        registerForAction()
+    }
+    
+    func registerForAction() {
+        guard let lastTip = tipLabel.text, lastTip != "" else { return }
+        if let bundleId = Bundle.main.bundleIdentifier {
+            let type = bundleId + ".DynamicAction"
+            
+            let newQuickAction = UIApplicationShortcutItem(type: type, localizedTitle: "Copy Last Result", localizedSubtitle: lastTip, icon: nil, userInfo: nil)
+
+            UIApplication.shared.shortcutItems = []
+            var existingShortcutItems = UIApplication.shared.shortcutItems ?? []
+            if !existingShortcutItems.contains(newQuickAction) {
+                
+                existingShortcutItems.append(newQuickAction)
+                UIApplication.shared.shortcutItems = existingShortcutItems
+            }
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let defaultSegmentedIndex = defaults.integer(forKey: DefaultKeys.defaultTipIndex.rawValue)
+        segmentedControl.selectedSegmentIndex = defaultSegmentedIndex
+        self.updateAnimated(false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        segmentedControl.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "MyriadPro-Light", size: 25)!], for: .normal)
-        displayTextField.becomeFirstResponder()
-        self.updateAnimated(false)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
+        displayTextField.becomeFirstResponder()
+        
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
     @IBAction func segmentedDidChange(_ sender: UISegmentedControl) {
@@ -52,7 +85,6 @@ class ViewController: UIViewController {
     func updateAnimated(_ animated: Bool) {
         guard let amountString = displayTextField.text as NSString? else { return }
         let amoutFloat = amountString.floatValue
-        print(amoutFloat)
         if amoutFloat == 0 {
             isTyping = false
             hideResultsViewAnimated(animated)
@@ -85,8 +117,12 @@ class ViewController: UIViewController {
                 total = 0
                 tip = 0
             }
-            tipLabel.text = "$\(tip)"
-            totalLabel.text = "$\(total)"
+            numberFormatter.numberStyle = .currency
+            let tipNumber = NSNumber(value: tip)
+            let totalNumber = NSNumber(value: total)
+            tipLabel.text = numberFormatter.string(from: tipNumber)
+            totalLabel.text = numberFormatter.string(from: totalNumber)
+            registerForAction()
         }
     }
     
@@ -116,9 +152,7 @@ class ViewController: UIViewController {
     func hideResultsViewAnimated(_ animated: Bool) {
         if animated {
             UIView.animate(withDuration: 0.4, delay: 0.0, options: UIViewAnimationOptions.transitionFlipFromTop, animations: {
-                
                 self.hideResultsView()
-
             }, completion: { finished in
                 
             })
@@ -127,6 +161,20 @@ class ViewController: UIViewController {
             self.itemsView.isHidden = true
         }
     }
+    
+    func applicationDidBecomeActive(_ notification: Notification) {
+        guard let lastValue = defaults.string(forKey: DefaultKeys.lastCalculatorValue.rawValue) else { return }
+        displayTextField.text = "\(lastValue)"
+        updateAnimated(false)
+        displayTextField.becomeFirstResponder()
+    }
+    
+    func applicationWillResign(_ notification: Notification) {
+        let lastValue = displayTextField.text
+        defaults.set(lastValue, forKey: DefaultKeys.lastCalculatorValue.rawValue)
+    }
+    
+    
     
 
 }

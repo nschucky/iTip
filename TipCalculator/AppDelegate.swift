@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum ShortcutType: String {
+    case new = "DynamicAction"
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         // Override point for customization after application launch.
         return true
     }
@@ -39,6 +44,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    
+    func handleShortcutItem(withShortcutItem item: UIApplicationShortcutItem) -> Bool {
+        
+        guard let shortcutType = item.type.components(separatedBy: ".").last else { return false }
+        
+        if let type = ShortcutType(rawValue: shortcutType) {
+            switch type {
+            case .new:
+                guard let lastTipValue = item.localizedSubtitle else { return false }
+                let pb = UIPasteboard.general
+                pb.string = lastTipValue
+                return true
+            }
+        }
+        return false
+    }
+    
+    
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        
+        completionHandler(handleShortcutItem(withShortcutItem: shortcutItem))
+        
     }
 
 

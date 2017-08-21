@@ -13,6 +13,7 @@
 		1959216C1F3139110039DC72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1959216B1F3139110039DC72 /* Assets.xcassets */; };
 		1959216F1F3139110039DC72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1959216D1F3139110039DC72 /* LaunchScreen.storyboard */; };
 		195921781F313A550039DC72 /* MyriadPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 195921771F313A4D0039DC72 /* MyriadPro-Light.otf */; };
+		19AF17541F4A22B30025DDA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AF17531F4A22B30025DDA5 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1959216E1F3139110039DC72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		195921701F3139110039DC72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		195921771F313A4D0039DC72 /* MyriadPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Light.otf"; sourceTree = "<group>"; };
+		19AF17531F4A22B30025DDA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				195921641F3139110039DC72 /* AppDelegate.swift */,
 				195921661F3139110039DC72 /* ViewController.swift */,
+				19AF17531F4A22B30025DDA5 /* SettingsViewController.swift */,
 				195921761F313A020039DC72 /* Fonts */,
 				195921681F3139110039DC72 /* Main.storyboard */,
 				1959216B1F3139110039DC72 /* Assets.xcassets */,
@@ -149,6 +152,7 @@
 			files = (
 				195921671F3139110039DC72 /* ViewController.swift in Sources */,
 				195921651F3139110039DC72 /* AppDelegate.swift in Sources */,
+				19AF17541F4A22B30025DDA5 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
