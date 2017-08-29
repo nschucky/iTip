@@ -12,6 +12,7 @@ enum DefaultKeys: String {
     case defaultTipIndex
     case lastCalculatorValue
     case uiMode
+    case lastDate
 }
 
 class ViewController: UIViewController {
@@ -103,9 +104,6 @@ class ViewController: UIViewController {
         }
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 
     @IBAction func segmentedDidChange(_ sender: UISegmentedControl) {
         updateValues()
@@ -197,19 +195,26 @@ class ViewController: UIViewController {
     
     func applicationDidBecomeActive(_ notification: Notification) {
         guard let lastValue = defaults.string(forKey: DefaultKeys.lastCalculatorValue.rawValue) else { return }
-        displayTextField.text = "\(lastValue)"
-        updateAnimated(false)
         displayTextField.becomeFirstResponder()
+        
+        guard let lastDate = defaults.value(forKey: DefaultKeys.lastDate.rawValue) as? Date else { return }
+        let date = Date()
+        if date.timeIntervalSince(lastDate) < 10 * 60 {
+            displayTextField.text = "\(lastValue)"
+            updateAnimated(false)
+        } else {
+            displayTextField.text = nil
+            updateAnimated(false)
+        }
     }
     
     func applicationWillResign(_ notification: Notification) {
+        let resignTime = Date()
         let lastValue = displayTextField.text
         defaults.set(lastValue, forKey: DefaultKeys.lastCalculatorValue.rawValue)
+        defaults.set(resignTime, forKey: DefaultKeys.lastDate.rawValue)
     }
     
-    
-    
-
 }
 
 
