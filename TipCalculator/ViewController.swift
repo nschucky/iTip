@@ -11,6 +11,7 @@ import UIKit
 enum DefaultKeys: String {
     case defaultTipIndex
     case lastCalculatorValue
+    case uiMode
 }
 
 class ViewController: UIViewController {
@@ -18,9 +19,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var displayTextField: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var itemsView: UIView!
-    @IBOutlet weak var itemsViewTopContraint: NSLayoutConstraint!
-    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var yourTipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var totalTextLabel: UILabel!
+    @IBOutlet weak var settingsBarButton: UIBarButtonItem!
     
     var isTyping = false
     let defaults = UserDefaults.standard
@@ -61,6 +64,8 @@ class ViewController: UIViewController {
         let defaultSegmentedIndex = defaults.integer(forKey: DefaultKeys.defaultTipIndex.rawValue)
         segmentedControl.selectedSegmentIndex = defaultSegmentedIndex
         self.updateAnimated(false)
+        let mode = defaults.bool(forKey: DefaultKeys.uiMode.rawValue)
+        updateUILightMode(mode)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,7 +74,35 @@ class ViewController: UIViewController {
         displayTextField.becomeFirstResponder()
         
     }
-
+    
+    func updateUILightMode(_ mode: Bool) {
+        if mode {
+            self.view.backgroundColor = .white
+            self.navigationController?.navigationBar.barStyle = .default
+            self.navigationController?.navigationBar.isTranslucent = true
+            self.navigationController?.navigationBar.tintColor = .black
+            
+            displayTextField.textColor = .black
+            yourTipLabel.textColor = .black
+            totalLabel.textColor = .black
+            tipLabel.textColor = .black
+            totalTextLabel.textColor = .black
+            settingsBarButton.tintColor = .black
+        } else {
+            self.view.backgroundColor = UIColor(red:0.25, green:0.25, blue:0.25, alpha:1.0)
+            self.navigationController?.navigationBar.barStyle = .black
+            self.navigationController?.navigationBar.isTranslucent = true
+            self.navigationController?.navigationBar.tintColor = .white
+            
+            displayTextField.textColor = .white
+            yourTipLabel.textColor = .white
+            totalLabel.textColor = .white
+            tipLabel.textColor = .white
+            totalTextLabel.textColor = .white
+            settingsBarButton.tintColor = .white
+        }
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

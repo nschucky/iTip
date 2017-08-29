@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JUZ-rH-eHk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JUZ-rH-eHk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,7 +39,7 @@
                                         </connections>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Tsg-xZ-JE2" firstAttribute="top" secondItem="YUs-px-ZIZ" secondAttribute="top" id="0Kd-3a-CpD"/>
                                     <constraint firstAttribute="trailing" secondItem="Tsg-xZ-JE2" secondAttribute="trailing" constant="10" id="5w0-ul-DqC"/>
@@ -62,7 +62,7 @@
                                             <segment title="20%"/>
                                             <segment title="25%"/>
                                         </segments>
-                                        <color key="tintColor" red="0.1764705882" green="0.14901960780000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.14117647058823529" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="segmentedDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="l1r-BL-0L4"/>
                                         </connections>
@@ -108,7 +108,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="5hM-8U-fKD" firstAttribute="leading" secondItem="73n-uI-xF2" secondAttribute="leading" id="1Rh-pC-0Tu"/>
                                     <constraint firstItem="8uh-1C-yJf" firstAttribute="leading" secondItem="73n-uI-xF2" secondAttribute="leading" constant="-3" id="APB-4I-Wyk"/>
@@ -146,8 +146,11 @@
                         <outlet property="displayTextField" destination="Tsg-xZ-JE2" id="Ue2-QH-Cos"/>
                         <outlet property="itemsView" destination="73n-uI-xF2" id="U1g-5f-Eqm"/>
                         <outlet property="segmentedControl" destination="8uh-1C-yJf" id="OtC-fQ-PT6"/>
+                        <outlet property="settingsBarButton" destination="0Ac-GA-3pP" id="aax-Du-FCr"/>
                         <outlet property="tipLabel" destination="mdi-G0-dka" id="c8r-P2-1jr"/>
-                        <outlet property="totalLabel" destination="B4g-fI-qXq" id="d8q-gW-lBb"/>
+                        <outlet property="totalLabel" destination="B4g-fI-qXq" id="eQc-0w-vPw"/>
+                        <outlet property="totalTextLabel" destination="Kcn-Ln-Tde" id="3by-NP-lbb"/>
+                        <outlet property="yourTipLabel" destination="srb-Jm-D8i" id="K2u-5U-UC8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -180,25 +183,56 @@
                                     <segment title="20%"/>
                                     <segment title="25%"/>
                                 </segments>
-                                <color key="tintColor" red="0.1764705882" green="0.14901960780000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.14117647058823529" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="segmentedDidChange:" destination="LYJ-O1-KQR" eventType="valueChanged" id="P0a-33-xkR"/>
                                 </connections>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m0h-v4-9NF">
+                                <rect key="frame" x="0.0" y="249" width="375" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable LightMode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwF-k0-KDB">
+                                        <rect key="frame" x="14" y="10.5" width="139.5" height="19"/>
+                                        <fontDescription key="fontDescription" name="MyriadPro-Light" family="Myriad Pro" pointSize="19"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CDf-vB-ssV">
+                                        <rect key="frame" x="306" y="5" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="uiModeDidChange:" destination="LYJ-O1-KQR" eventType="valueChanged" id="TID-bt-hvv"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5Q2-O9-U2v"/>
+                                    <constraint firstItem="iwF-k0-KDB" firstAttribute="leading" secondItem="m0h-v4-9NF" secondAttribute="leading" constant="14" id="73o-qu-YEb"/>
+                                    <constraint firstAttribute="trailing" secondItem="CDf-vB-ssV" secondAttribute="trailing" constant="20" id="TVC-aO-vDc"/>
+                                    <constraint firstItem="CDf-vB-ssV" firstAttribute="centerY" secondItem="m0h-v4-9NF" secondAttribute="centerY" id="X2y-zk-ZBc"/>
+                                    <constraint firstItem="iwF-k0-KDB" firstAttribute="centerY" secondItem="m0h-v4-9NF" secondAttribute="centerY" id="dGV-k0-2yb"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dkF-zG-X8a" firstAttribute="top" secondItem="jhx-aH-7Lk" secondAttribute="top" constant="28" id="C7e-oQ-A83"/>
                             <constraint firstItem="Ft9-G5-Vc6" firstAttribute="top" secondItem="dkF-zG-X8a" secondAttribute="bottom" constant="24" id="HJ3-Dl-XKd"/>
+                            <constraint firstItem="jhx-aH-7Lk" firstAttribute="trailing" secondItem="m0h-v4-9NF" secondAttribute="trailing" id="Qfp-ck-kKJ"/>
                             <constraint firstAttribute="trailing" secondItem="Ft9-G5-Vc6" secondAttribute="trailing" constant="-3" id="XBq-B8-lgZ"/>
                             <constraint firstItem="Ft9-G5-Vc6" firstAttribute="leading" secondItem="8S7-VV-k5T" secondAttribute="leading" constant="-3" id="cS3-d7-fsZ"/>
+                            <constraint firstItem="m0h-v4-9NF" firstAttribute="top" secondItem="Ft9-G5-Vc6" secondAttribute="bottom" constant="50" id="fqh-Uw-R7B"/>
                             <constraint firstItem="dkF-zG-X8a" firstAttribute="leading" secondItem="jhx-aH-7Lk" secondAttribute="leading" constant="16" id="rJU-1q-MM7"/>
+                            <constraint firstItem="m0h-v4-9NF" firstAttribute="leading" secondItem="jhx-aH-7Lk" secondAttribute="leading" id="ymV-G1-ywQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jhx-aH-7Lk"/>
                     </view>
                     <connections>
                         <outlet property="segmentedControl" destination="Ft9-G5-Vc6" id="v5R-js-OTb"/>
+                        <outlet property="selectModeLabel" destination="iwF-k0-KDB" id="0ms-xt-N8O"/>
+                        <outlet property="selectValueLabel" destination="dkF-zG-X8a" id="wnv-pt-BSL"/>
+                        <outlet property="uiModeEnabler" destination="CDf-vB-ssV" id="57i-Zu-tI5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Waw-ir-6Id" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,10 +248,8 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.1764705882352941" green="0.14901960784313725" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="MyriadPro-Light" family="Myriad Pro" pointSize="25"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
