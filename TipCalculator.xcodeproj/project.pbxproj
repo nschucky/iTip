@@ -25,7 +25,7 @@
 		1959216E1F3139110039DC72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		195921701F3139110039DC72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		195921771F313A4D0039DC72 /* MyriadPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Light.otf"; sourceTree = "<group>"; };
-		198DEC761F4B8A6700A68D35 /* itip-app.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "itip-app.gif"; sourceTree = "<group>"; };
+		199A93B81F55DA590041C6AD /* itip-app.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "itip-app.gif"; sourceTree = "<group>"; };
 		19AF17531F4A22B30025DDA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +83,7 @@
 		198DEC751F4B8A5A00A68D35 /* gif */ = {
 			isa = PBXGroup;
 			children = (
-				198DEC761F4B8A6700A68D35 /* itip-app.gif */,
+				199A93B81F55DA590041C6AD /* itip-app.gif */,
 			);
 			path = gif;
 			sourceTree = "<group>";
